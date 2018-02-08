@@ -1,0 +1,17 @@
+.signfile-button {
+    display: block;
+    margin: 0 auto !important;
+}
+
+.waiting-circle {
+    width: 48px;
+    display: table-caption;
+    margin: 0 auto;
+    padding: -10px 0 20px 0;
+}
+
+#signfile-underneath-message {
+    text-align: center;
+    padding: 10px 16px 0 16px;
+    visibility: hidden;
+}

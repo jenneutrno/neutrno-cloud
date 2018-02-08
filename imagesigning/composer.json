@@ -1,0 +1,15 @@
+{
+    "name": "Image Signing",
+    "description": "Image signing app for executables uploaded to Nextcloud",
+    "type": "project",
+    "license": "AGPL",
+    "authors": [
+        {
+            "name": "Jennifer Kalidoss"
+        }
+    ],
+    "require": {},
+    "require-dev": {
+        "phpunit/phpunit": "^5.4"
+    }
+}

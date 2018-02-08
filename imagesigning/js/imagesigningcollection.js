@@ -1,0 +1,90 @@
+
+(function() {
+	/**
+	 * @memberof OCA.ImageSigning
+	 */
+	var ImageSigningCollection = OC.Backbone.Collection.extend({
+		model: OCA.ImageSigning.ImageSigningModel,
+
+		/**
+		 * @var OCA.Files.FileInfoModel
+		 */
+		_fileInfo: null,
+
+		_endReached: false,
+		_currentIndex: 0,
+
+		url: function() {
+			// var url = OC.generateUrl('/apps/files_versions/ajax/getVersions.php');
+			// var query = {
+			// 	source: this._fileInfo.getFullPath(),
+			// 	start: this._currentIndex
+			// };
+			// return url + '?' + OC.buildQueryString(query);
+            return "URL";
+		},
+
+		setFileInfo: function(fileInfo) {
+			this._fileInfo = fileInfo;
+			// reset
+			this._endReached = false;
+			this._currentIndex = 0;
+		},
+
+		getFileInfo: function() {
+			return this._fileInfo;
+		},
+
+		hasMoreResults: function() {
+			return !this._endReached;
+		},
+
+		fetch: function(options) {
+			if (!options || options.remove) {
+				this._currentIndex = 0;
+			}
+			return OC.Backbone.Collection.prototype.fetch.apply(this, arguments);
+		},
+
+		/**
+		 * Fetch the next set of results
+		 */
+		fetchNext: function() {
+			if (!this.hasMoreResults()) {
+				return null;
+			}
+			if (this._currentIndex === 0) {
+				return this.fetch();
+			}
+			return this.fetch({remove: false});
+		},
+
+		reset: function() {
+			this._currentIndex = 0;
+			OC.Backbone.Collection.prototype.reset.apply(this, arguments);
+		},
+        //
+		// parse: function(result) {
+		// 	var fullPath = this._fileInfo.getFullPath();
+		// 	var results = _.map(result.data.imagesigning, function(imagesigning) {
+		// 		var revision = parseInt(imagesigning.imagesigning, 1);
+		// 		return {
+		// 			id: revision,
+		// 			name: imagesigning.name,
+		// 			fullPath: fullPath,
+		// 			timestamp: revision,
+		// 			size: imagesigning.size,
+		// 			mimetype: imagesigning.mimetype
+		// 		};
+		// 	});
+		// 	this._endReached = result.data.endReached;
+		// 	this._currentIndex += results.length;
+		// 	return results;
+		// }
+	});
+
+    OCA.ImageSigning = OCA.ImageSigning || {};
+
+    OCA.ImageSigning.ImageSigningCollection = ImageSigningCollection;
+})();
+

@@ -1,0 +1,32 @@
+#ImageSigning select {
+    width: 200px;
+}
+
+#imagesigning_url {
+    width: 400px;
+}
+
+#imagesigning_active {
+    vertical-align: -11px;
+    margin-left: 10px;
+}
+
+#imagesigning_name,
+#imagesigning_worker,
+#imagesigning_url {
+    cursor: text;
+}
+
+#imagesigning_add {
+    vertical-align: -4px;
+    font-size: 2em;
+    margin: 0;
+    padding: 0 10px 0 10px;
+    height: 32px;
+    line-height: 0;
+}
+
+.buttonWarn {
+    background-color: orangered;
+    color: white;
+}
